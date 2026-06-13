@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Centered Canvas</title>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+	<main class="panel">
+
+		<canvas id="c" width="500" height="300"></canvas>
+		<div class="sliders-container">
+			<div class="sliders-div">
+				<span>
+					<p>Camera Controls</p>
+				</span>
+
+				<label class="slider-row" for="cam-rot-slider">
+					<span>Cam Rotation Horizontal</span>
+					<input id="cam-rot" type="range" min="-3.14" max="3.14" step="0.01" value="0" />
+				</label>
+				<label class="slider-row" for="cam-rot-slider">
+					<span>Cam Rotation Vertical</span>
+					<input id="cam-rot-vert" type="range" min="-1.5" max="1.5" step="0.01" value="0" />
+				</label>
+				<label class="slider-row" for="cam-radius-slider">
+					<span>Cam radius</span>
+					<input id="cam-rad" type="range" min="100" max="1000" step="0.01" value="1" />
+				</label>
+
+				<span>
+					<p>Terrain Control</p>
+				</span>
+
+				<label class="slider-row" for="seed-input">
+					<span>Random Seed</span>
+					<input id="seed-input" type="number" />
+				</label>
+
+				<label class="slider-row" for="amplitude-slider">
+					<span>Amplitude</span>
+					<input id="amplitude-slider" type="range" min="0" max="2" step="0.01" value="1" />
+				</label>
+
+				<label class="slider-row" for="persistance-slider">
+					<span>Persistance</span>
+					<input id="persistance-slider" type="range" min="0" max="1" step="0.01" value="0" />
+				</label>
+
+				<label class="slider-row" for="octives-slider">
+					<span>Octives</span>
+					<input id="octives-slider" type="range" min="1" max="8" step="1" value="0" />
+				</label>
+
+			</div>
+			<div class="sliders-div">
+				<span>
+					<p>Object Controls</p>
+				</span>
+
+				<label class="slider-row" for="x-slider">
+					<span>Position X</span>
+					<input id="x-slider" type="range" min="-1000" max="1000" value="0" />
+				</label>
+				<label class="slider-row" for="y-slider">
+					<span>Position Y</span>
+					<input id="y-slider" type="range" min="-1000" max="1000" value="0" />
+				</label>
+				<label class="slider-row" for="rot-z-slider">
+					<span>Rotation</span>
+					<input id="rot-z-slider" type="range" min="0" max="360" value="0" />
+				</label>
+				<label class="slider-row" for="scale-x-slider">
+					<span>Scale X</span>
+					<input id="scale-x-slider" type="range" min="-10" max="10" step="0.01" value="1" />
+				</label>
+				<label class="slider-row" for="scale-y-slider">
+					<span>Scale Y</span>
+					<input id="scale-y-slider" type="range" min="-10" max="10" step="0.01" value="1" />
+				</label>
+			</div>
+
+		</div>
+
+
+	</main>
+	<script src="./procedural/perlin-noise-gen.js" defer></script>
+	<script src="./procedural/height-fields.js" defer></script>
+	<script src="./procedural/mesh-utils.js" defer></script>
+	<script src="objects.js" defer></script>
+	<script src="objects.js" defer></script>
+	<script src="webgl-utils.js" defer></script>
+	<script src="m4.js" defer></script>
+	<script src="data.js" defer></script>
+	<script src="gl_shaders.js" defer></script>
+	<script src="sliders.js" defer></script>
+	<script src="hunter-utils.js" defer></script>
+	<script src="main.js" defer></script>
+
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+html,
+body {
+	margin: 10px;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #0ba7ea;
+	font-family: sans-serif;
+	margin-top:  300px;
+}
+
+.panel {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 12px;
+	border: 1px solid #d7dde8;
+	border-radius: 12px;
+	background: #ffffff;
+	box-shadow: 0 10px 30px rgba(24, 36, 61, 0.08);
+}
+
+.sliders-container{
+	display: flex;
+	flex-direction: row;
+}
+
+.sliders-div{
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 12px;
+	border: 1px solid #d7dde8;
+	border-radius: 12px;
+	background: #ffffff;
+	box-shadow: 0 10px 30px rgba(24, 36, 61, 0.08);
+}
+
+canvas {
+	width: 1200px;
+	height: 600px;
+	border: 1px solid #222;
+	background: #fff;
+}
+
+.slider-row {
+	display: flex;
+	align-items: center;
+	gap: 1px;
+	font-size: 5px;
+	color: #222;
+	padding: 1px 0;
+}
+
+.slider-row span {
+	width: 72px;
+	font-size: 10px;
+	font-weight: 600;
+}
+
+.slider-row input[type="range"] {
+	flex: 1;
+}
+
+p{
+    font-size: 10px;
+	font-weight: 600;
+    text-align: center;
+}
