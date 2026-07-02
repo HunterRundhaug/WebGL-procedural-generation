@@ -13,6 +13,58 @@ var octives = document.getElementById("octives-slider");
 var noiseAmplitude = document.getElementById("amplitude-slider");
 var persistance = document.getElementById("persistance-slider");
 var seed = document.getElementById("seed-input");
+var terrainSize = document.getElementById("terrain-size-slider");
+
+var sliderReadoutFormatters = {
+  "terrain-size-slider": function (value) {
+    return value + " x " + value;
+  },
+};
+
+function formatSliderValue(input) {
+  var value = Number(input.value);
+  var formatter = sliderReadoutFormatters[input.id];
+
+  if (formatter) {
+    return formatter(Math.floor(value));
+  }
+
+  if (input.step && input.step !== "1") {
+    return value.toFixed(2);
+  }
+
+  return String(Math.floor(value));
+}
+
+function setupSliderReadout(input) {
+  if (!input) {
+    return;
+  }
+
+  var row = input.closest(".slider-row");
+  if (!row) {
+    return;
+  }
+
+  var readout = row.querySelector(".value-readout");
+  if (!readout) {
+    readout = document.createElement("span");
+    readout.className = "value-readout";
+    row.appendChild(readout);
+  }
+
+  function updateReadout() {
+    readout.textContent = formatSliderValue(input);
+  }
+
+  input.addEventListener("input", updateReadout);
+  updateReadout();
+}
+
+function setupSliderReadouts() {
+  var sliders = document.querySelectorAll('.slider-row input[type="range"]');
+  sliders.forEach(setupSliderReadout);
+}
 
 window.initSliders = function initSliders(opts) {
   var canvas = opts.canvas;
@@ -22,6 +74,7 @@ window.initSliders = function initSliders(opts) {
   var drawScene = opts.drawScene;
   camera = opts.camera;
   var heightField = opts.heightField;
+  var setTerrainSize = opts.setTerrainSize;
   var updateGeometryAndDrawScene = opts.updateGeometryAndDrawScene;
 
 
@@ -122,6 +175,14 @@ window.initSliders = function initSliders(opts) {
       updateGeometryAndDrawScene();
     });
   }
+
+  if (terrainSize && setTerrainSize) {
+    terrainSize.addEventListener("input", function (event) {
+      setTerrainSize(Math.floor(Number(event.target.value)));
+    });
+  }
+
+  setupSliderReadouts();
 };
 
 function setSliders(values){
@@ -130,5 +191,9 @@ function setSliders(values){
   persistance.value = heightField.getPersistance();
   octives.value = heightField.getOctives();
   seed.value = heightField.getSeed();
+
+  if (terrainSize) {
+    terrainSize.value = values.terrainSize;
+  }
 }
 

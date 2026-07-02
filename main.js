@@ -32,8 +32,8 @@ function main() {
     var normalAttribLocation = gl.getAttribLocation(program, "a_normal");
 
     // Procedural setup
-    let nx = 400; 
-    let ny = 400;
+    let nx = 40; 
+    let ny = 40;
     var heightField = new ProceduralHeightField(new Vector2(20, 20), new Vector2(-4, 4), nx, ny);
     var mesh = CreateHeightFieldMesh(heightField, nx, ny);
     var geometry = meshToPositionBufferData(mesh);
@@ -47,7 +47,7 @@ function main() {
     var translation = [0, 0, -80];
     var rotation = [degToRad(0), degToRad(0), degToRad(0)];
     var scale = [10, 10, 10];
-    var color = [Math.random(), Math.random(), Math.random(), 1];
+    //var color = [Math.random(), Math.random(), Math.random(), 1];
 
     // camera                  
     let camera = new Camera([0, 0, 0], [0, 0, -80], 200, [0, 0], 
@@ -58,6 +58,7 @@ function main() {
 
     let sliderValues = {
         heightField: heightField,
+        terrainSize: nx,
     };
     setSliders(sliderValues);
 
@@ -70,6 +71,7 @@ function main() {
             drawScene: drawScene,
             camera: camera,
             heightField: heightField,
+            setTerrainSize: setTerrainSize,
             updateGeometryAndDrawScene: updateGeometryAndDrawScene,
         });
     }
@@ -88,10 +90,18 @@ function main() {
 
     function updateGeometryAndDrawScene(){
         var mesh = CreateHeightFieldMesh(heightField, nx, ny);
-        var geometry = meshToPositionBufferData(mesh);
+        geometry = meshToPositionBufferData(mesh);
         setPositionBuffer(positionBuffer, geometry);
         setNormalBuffer(normalBuffer, geometry);
         drawScene();
+    }
+
+    function setTerrainSize(size){
+        nx = size;
+        ny = size;
+        heightField.nx = nx;
+        heightField.ny = ny;
+        updateGeometryAndDrawScene();
     }
 
     // drawScene() call at bottom so nothing can be undefined
