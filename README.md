@@ -141,11 +141,5 @@ http://localhost:8000
 - Support larger or adaptive terrain resolutions
 - Add screenshot examples and a live demo link
 
-## Screenshots
 
-Add project images here:
-
-![Terrain view placeholder](docs/images/terrain-view.png)
-
-![Noise controls placeholder](docs/images/controls-view.png)
 
