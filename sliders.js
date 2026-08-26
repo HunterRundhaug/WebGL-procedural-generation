@@ -4,6 +4,9 @@ var ySlider = document.getElementById("y-slider");
 var rotZSlider = document.getElementById("rot-z-slider");
 var scaleXSlider = document.getElementById("scale-x-slider");
 var scaleYSlider = document.getElementById("scale-y-slider");
+var colorRSlider = document.getElementById("color-r-slider");
+var colorGSlider = document.getElementById("color-g-slider");
+var colorBSlider = document.getElementById("color-b-slider");
 
 var camRotHorizontal = document.getElementById("cam-rot");
 var camRotVertical = document.getElementById("cam-rot-vert");
@@ -76,7 +79,41 @@ window.initSliders = function initSliders(opts) {
   var heightField = opts.heightField;
   var setTerrainSize = opts.setTerrainSize;
   var updateGeometryAndDrawScene = opts.updateGeometryAndDrawScene;
+  var mesh_color = opts.mesh_color;
 
+  let mouseDown = false;
+
+  canvas.addEventListener("mousedown", () => {
+      mouseDown = true;
+  });
+
+  canvas.addEventListener("mouseup", () => {
+      mouseDown = false;
+  });
+
+  canvas.addEventListener("mousemove", (event) => {
+    if (!mouseDown){
+      return;
+    }
+    const rect = canvas.getBoundingClientRect();
+
+    const middleX = rect.left + rect.width / 2;
+    const middleY = rect.top + rect.height / 2;
+
+    const x = event.clientX - middleX;
+    const y = event.clientY - middleY;
+
+    final_pos_x = 0.005 * -x;
+    final_pos_y = 0.005 * y;
+    
+    camera.angleRadians[0] =  final_pos_x
+    camera.angleRadians[1] =  final_pos_y
+    camRotHorizontal.value = final_pos_x;
+    camRotHorizontal.dispatchEvent(new Event("input", { bubbles: true }));
+    camRotVertical.value = final_pos_y;
+    camRotHorizontal.dispatchEvent(new Event("input", { bubbles: true }));
+    drawScene();
+  });
 
 
   if (xSlider) {
@@ -115,6 +152,27 @@ window.initSliders = function initSliders(opts) {
   if (scaleYSlider) {
     scaleYSlider.addEventListener("input", function (event) {
       scale[1] = Number(event.target.value);
+      drawScene();
+    });
+  }
+
+  if (colorRSlider) {
+    colorRSlider.addEventListener("input", function (event) {
+      mesh_color.r = Number(event.target.value);
+      drawScene();
+    });
+  }
+
+  if (colorGSlider) {
+    colorGSlider.addEventListener("input", function (event) {
+      mesh_color.g = Number(event.target.value);
+      drawScene();
+    });
+  }
+
+  if (colorBSlider) {
+    colorBSlider.addEventListener("input", function (event) {
+      mesh_color.b = Number(event.target.value);
       drawScene();
     });
   }

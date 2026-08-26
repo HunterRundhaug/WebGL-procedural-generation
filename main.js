@@ -30,6 +30,8 @@ function main() {
     var matrixLocation = gl.getUniformLocation(program, "u_matrix");
     // normal
     var normalAttribLocation = gl.getAttribLocation(program, "a_normal");
+    // dynamic color
+    var colorUniformLocation = gl.getUniformLocation(program, "u_color");
 
     // Procedural setup
     let nx = 40; 
@@ -48,6 +50,13 @@ function main() {
     var rotation = [degToRad(0), degToRad(0), degToRad(0)];
     var scale = [10, 10, 10];
     //var color = [Math.random(), Math.random(), Math.random(), 1];
+
+    var mesh_color = {
+        r: 0.2,
+        g: 0.4,
+        b: 0.0,
+        a: 1
+    };
 
     // camera                  
     let camera = new Camera([0, 0, 0], [0, 0, -80], 200, [0, 0], 
@@ -73,6 +82,7 @@ function main() {
             heightField: heightField,
             setTerrainSize: setTerrainSize,
             updateGeometryAndDrawScene: updateGeometryAndDrawScene,
+            mesh_color: mesh_color,
         });
     }
 
@@ -180,6 +190,11 @@ function main() {
 
         // Set the matrix.
         gl.uniformMatrix4fv(matrixLocation, false, finalMatrix);
+
+        var m_r = mesh_color.r;
+        var m_g = mesh_color.g;
+        var m_b = mesh_color.b;
+        gl.uniform4f(colorUniformLocation, m_r, m_g, m_b, 1.0);
 
         // Draw the geometry.
         var primitiveType = gl.TRIANGLES;
