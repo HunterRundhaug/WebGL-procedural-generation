@@ -2,7 +2,9 @@
 
 An interactive WebGL project built to strengthen my understanding of low-level browser graphics, Perlin noise, and procedural mesh generation. The project began as a renderer for basic WebGL objects, then expanded into noise experiments and finally into a generated terrain surface built from height field data.
 
-https://hunterrundhaug.github.io/WebGL-procedural-generation/
+### 🌎 [**▶️ Live Demo**](https://hunterrundhaug.github.io/WebGL-procedural-generation/)
+## 🌎 [View the Interactive Demo →](https://hunterrundhaug.github.io/WebGL-procedural-generation/)
+> ### 🌎 [**Try the WebGL Demo →**](https://hunterrundhaug.github.io/WebGL-procedural-generation/)
 
 ![Project screenshot placeholder](docs/images/terrain-preview.jpeg)
 
