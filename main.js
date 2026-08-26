@@ -52,14 +52,14 @@ function main() {
     //var color = [Math.random(), Math.random(), Math.random(), 1];
 
     var mesh_color = {
-        r: 0.2,
-        g: 0.4,
-        b: 0.0,
+        r: 0.3,
+        g: 0.6,
+        b: 1.0,
         a: 1
     };
 
     // camera                  
-    let camera = new Camera([0, 0, 0], [0, 0, -80], 200, [0, 0], 
+    let camera = new Camera([0, 0, 0], [0, 0, -80], 200, [0, 0.5], 
         gl.canvas.clientWidth / gl.canvas.clientHeight,
         1, 2000,
     );

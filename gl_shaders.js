@@ -38,7 +38,7 @@ const vertex_shader_1 = `
 
         gl_Position = u_matrix * a_position;
 
-        float diffuse = max(0.5, dot(L, a_normal));
+        float diffuse = max(0.0, dot(L, a_normal));
         v_color = vec4(u_color.xyz * diffuse, 1);
 
     }       
