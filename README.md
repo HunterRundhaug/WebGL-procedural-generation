@@ -3,7 +3,7 @@
 An interactive WebGL project built to strengthen my understanding of low-level browser graphics, Perlin noise, and procedural mesh generation. The project began as a renderer for basic WebGL objects, then expanded into noise experiments and finally into a generated terrain surface built from height field data.
 
 ![Project screenshot placeholder](docs/images/terrain-preview.jpeg)
-![Project screenshot](docs/images/terrain-preview-2.jpeg)
+
 
 ## Overview
 
@@ -64,6 +64,8 @@ The renderer handles the graphics pipeline manually:
 - Builds model, view, and projection matrices
 - Applies camera orbit controls around a look-at point
 - Draws the generated mesh with depth testing enabled
+
+  ![Project screenshot](docs/images/terrain-preview-2.jpeg)
 
 ## Controls
 
