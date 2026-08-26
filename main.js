@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 // js init - - -
 console.log("working...");
 let canvas = document.getElementById("c");
@@ -235,12 +233,7 @@ function main() {
         gl.deleteShader(shader);
     }
 
-    
-
     drawScene();
 }
-
-
-
 
 main();
