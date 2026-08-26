@@ -81,6 +81,7 @@ The browser UI includes controls for:
 - Object position
 - Object rotation
 - Object scale
+- Object color RGB
 
 Changing terrain settings regenerates the mesh and redraws the scene immediately.
 
