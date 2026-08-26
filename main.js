@@ -30,6 +30,8 @@ function main() {
     var normalAttribLocation = gl.getAttribLocation(program, "a_normal");
     // dynamic color
     var colorUniformLocation = gl.getUniformLocation(program, "u_color");
+    ///
+    var colorModeUniform = gl.getUniformLocation(program, "u_colorMode");
 
     // Procedural setup
     let nx = 40; 
@@ -54,6 +56,10 @@ function main() {
         g: 0.6,
         b: 1.0,
         a: 1
+    };
+
+    var color_mode = {
+        diffuse: true,
     };
 
     // camera                  
@@ -81,6 +87,7 @@ function main() {
             setTerrainSize: setTerrainSize,
             updateGeometryAndDrawScene: updateGeometryAndDrawScene,
             mesh_color: mesh_color,
+            color_mode: color_mode,
         });
     }
 
@@ -193,6 +200,8 @@ function main() {
         var m_g = mesh_color.g;
         var m_b = mesh_color.b;
         gl.uniform4f(colorUniformLocation, m_r, m_g, m_b, 1.0);
+
+        gl.uniform1i(colorModeUniform, color_mode.diffuse);
 
         // Draw the geometry.
         var primitiveType = gl.TRIANGLES;

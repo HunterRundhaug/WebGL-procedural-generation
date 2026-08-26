@@ -1,4 +1,5 @@
 
+var colorToggle = document.getElementById("color-mode-toggle");
 var xSlider = document.getElementById("x-slider");
 var ySlider = document.getElementById("y-slider");
 var rotZSlider = document.getElementById("rot-z-slider");
@@ -80,6 +81,7 @@ window.initSliders = function initSliders(opts) {
   var setTerrainSize = opts.setTerrainSize;
   var updateGeometryAndDrawScene = opts.updateGeometryAndDrawScene;
   var mesh_color = opts.mesh_color;
+  var color_mode = opts.color_mode;
 
   let mouseDown = false;
 
@@ -115,6 +117,12 @@ window.initSliders = function initSliders(opts) {
     drawScene();
   });
 
+  if (colorToggle){
+      colorToggle.addEventListener("change", () => {
+          color_mode.diffuse = colorToggle.checked;
+          drawScene();
+      });
+  }
 
   if (xSlider) {
     xSlider.addEventListener("input", function (event) {
