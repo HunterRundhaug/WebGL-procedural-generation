@@ -85,6 +85,7 @@ The browser UI includes controls for:
 - Object scale
 - Object color RGB
 - Toggle between diffuse lighting and view normals as color
+- Light Position 
 
 Changing terrain settings regenerates the mesh and redraws the scene immediately.
 
