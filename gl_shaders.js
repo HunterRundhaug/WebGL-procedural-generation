@@ -29,6 +29,7 @@ const vertex_shader_1 = `
     uniform mat4 u_matrix;
     uniform vec4 u_color;
     uniform bool u_colorMode;
+    uniform vec3 u_lightPosition;
     
 
     varying vec4 v_color;
@@ -37,8 +38,7 @@ const vertex_shader_1 = `
         gl_Position = u_matrix * a_position;
 
         if(u_colorMode){
-            vec3 light_Position = vec3(100,200,10);
-            vec3 L = normalize(light_Position - a_position.xyz);
+            vec3 L = normalize(u_lightPosition - a_position.xyz);
             float diffuse = max(0.0, dot(L, a_normal));
             v_color = vec4(u_color.xyz * diffuse, 1);
         }

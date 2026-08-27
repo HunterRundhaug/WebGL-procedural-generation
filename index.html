@@ -12,6 +12,7 @@
 	<main class="panel">
 
 		<canvas id="c" width="500" height="300"></canvas>
+		<p>Click and drag on canvas to move camera.</p>
 		<div class="sliders-container">
 			<div class="sliders-div">
 				<span>
@@ -28,7 +29,7 @@
 				</label>
 				<label class="slider-row" for="cam-radius-slider">
 					<span>Cam radius</span>
-					<input id="cam-rad" type="range" min="100" max="1000" step="0.01" value="1" />
+					<input id="cam-rad" type="range" min="100" max="1000" step="0.01" value="200" />
 				</label>
 
 				<span>
@@ -42,7 +43,7 @@
 
 				<label class="slider-row" for="terrain-size-slider">
 					<span>Terrain Density</span>
-					<input id="terrain-size-slider" type="range" min="10" max="300" step="1" value="40" />
+					<input id="terrain-size-slider" type="range" min="10" max="500" step="1" value="40" />
 				</label>
 
 				<label class="slider-row" for="amplitude-slider">
@@ -86,10 +87,17 @@
 					<span>Scale Y</span>
 					<input id="scale-y-slider" type="range" min="-10" max="10" step="0.01" value="1" />
 				</label>
+				
+				
+				<span>
+					<p>Lighting Controls</p>
+				</span>
+
 				<label class="slider-row" for="color-r-slider">
 					<span>Color R</span>
 					<input id="color-r-slider" type="range" min="0" max="1" step="0.001" value=".5" />
 				</label>
+
 				<label class="slider-row" for="color-g-slider">
 					<span>Color G</span>
 					<input id="color-g-slider" type="range" min="0" max="1" step="0.001" value=".5" />
@@ -102,6 +110,20 @@
 					<span>Diffuse/Normal</span>
 					<input id="color-mode-toggle" type="checkbox" checked="true"/>
 				</label>
+				
+				<label class="slider-row" for="light-pos-x">
+					<span>Light Position X</span>
+					<input id="light-pos-x" type="range" min="-300" max="300" step="1" value="100" />
+				</label>
+				<label class="slider-row" for="light-pos-y">
+					<span>Light Position Y</span>
+					<input id="light-pos-y" type="range" min="-300" max="300" step="1" value="100" />
+				</label>
+				<label class="slider-row" for="light-pos-z">
+					<span>Light Position Z</span>
+					<input id="light-pos-z" type="range" min="-300" max="300" step="1" value="0" />
+				</label>
+
 			</div>
 
 		</div>

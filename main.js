@@ -30,12 +30,14 @@ function main() {
     var normalAttribLocation = gl.getAttribLocation(program, "a_normal");
     // dynamic color
     var colorUniformLocation = gl.getUniformLocation(program, "u_color");
-    ///
+    // lighting/color mode (diffuse or visualize normals)
     var colorModeUniform = gl.getUniformLocation(program, "u_colorMode");
+    // light position (used for lighting calculations)
+    var lightPositionUniform = gl.getUniformLocation(program, "u_lightPosition");
 
     // Procedural setup
-    let nx = 40; 
-    let ny = 40;
+    let nx = 100; 
+    let ny = 100;
     var heightField = new ProceduralHeightField(new Vector2(20, 20), new Vector2(-4, 4), nx, ny);
     var mesh = CreateHeightFieldMesh(heightField, nx, ny);
     var geometry = meshToPositionBufferData(mesh);
@@ -61,6 +63,12 @@ function main() {
     var color_mode = {
         diffuse: true,
     };
+
+    var lightPosition = {
+        x: 100,
+        y: 100,
+        z: 10,
+    }
 
     // camera                  
     let camera = new Camera([0, 0, 0], [0, 0, -80], 200, [0, 0.5], 
@@ -88,6 +96,7 @@ function main() {
             updateGeometryAndDrawScene: updateGeometryAndDrawScene,
             mesh_color: mesh_color,
             color_mode: color_mode,
+            lightPosition: lightPosition,
         });
     }
 
@@ -202,6 +211,7 @@ function main() {
         gl.uniform4f(colorUniformLocation, m_r, m_g, m_b, 1.0);
 
         gl.uniform1i(colorModeUniform, color_mode.diffuse);
+        gl.uniform3f(lightPositionUniform, lightPosition.x, lightPosition.y, lightPosition.z);
 
         // Draw the geometry.
         var primitiveType = gl.TRIANGLES;

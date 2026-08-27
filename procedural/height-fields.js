@@ -77,7 +77,7 @@ class ProceduralHeightField extends BaseHeightField {
         this.seed = 67;
         this.grids = [];
         this.octives = 4;
-        this.persistance = 0.3;
+        this.persistance = 0.1;
         this.amplitude = 0.6;
         this.CreateOctives();
     }

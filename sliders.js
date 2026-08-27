@@ -9,6 +9,10 @@ var colorRSlider = document.getElementById("color-r-slider");
 var colorGSlider = document.getElementById("color-g-slider");
 var colorBSlider = document.getElementById("color-b-slider");
 
+var lightPositionX = document.getElementById("light-pos-x");
+var lightPositionY = document.getElementById("light-pos-y");
+var lightPositionZ = document.getElementById("light-pos-z");
+
 var camRotHorizontal = document.getElementById("cam-rot");
 var camRotVertical = document.getElementById("cam-rot-vert");
 var camRad = document.getElementById("cam-rad");
@@ -82,6 +86,7 @@ window.initSliders = function initSliders(opts) {
   var updateGeometryAndDrawScene = opts.updateGeometryAndDrawScene;
   var mesh_color = opts.mesh_color;
   var color_mode = opts.color_mode;
+  var lightPosition = opts.lightPosition;
 
   let mouseDown = false;
 
@@ -245,6 +250,27 @@ window.initSliders = function initSliders(opts) {
   if (terrainSize && setTerrainSize) {
     terrainSize.addEventListener("input", function (event) {
       setTerrainSize(Math.floor(Number(event.target.value)));
+    });
+  }
+
+  if (lightPositionX) {
+    lightPositionX.addEventListener("input", function (event) {
+      lightPosition.x = Number(event.target.value);
+      drawScene();
+    });
+  }
+
+  if (lightPositionY) {
+    lightPositionY.addEventListener("input", function (event) {
+      lightPosition.y = Number(event.target.value);
+      drawScene();
+    });
+  }
+
+  if (lightPositionZ) {
+    lightPositionZ.addEventListener("input", function (event) {
+      lightPosition.z = Number(event.target.value);
+      drawScene();
     });
   }
 
